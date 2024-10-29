@@ -17,10 +17,10 @@
 
 namespace tokenizer{
 
-        class TiktokenFactory{
+        class tokenFactory{
         public:
                 std::ifstream file_;
-                explicit TiktokenFactory(const std::string config);     
+                explicit tokenFactory(const std::string config);     
                 std::string config_path;   
                 std::string decode(std::vector<int> id);
                 void encode(const std::string& str, std::vector<int>& ids);

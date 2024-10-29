@@ -21,7 +21,7 @@ int  main(int argc, char **argv){
     }
 
     std::string config_path = tiktoken_conf;
-    tokenizer::TiktokenFactory factory(config_path); 
+    tokenizer::tokenFactory factory(config_path); 
     std::vector<int> id;
     std::string decode_string;
     factory.encode("hello world",id);

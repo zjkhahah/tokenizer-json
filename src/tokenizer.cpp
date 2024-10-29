@@ -17,7 +17,7 @@ std::string wstring_to_utf8(const std::wstring& str) {
 }
 
 
-tokenizer::TiktokenFactory::TiktokenFactory(const std::string config){
+tokenizer::tokenFactory::tokenFactory(const std::string config){
    
     file_.open(config);
     if (!file_.is_open()) {
@@ -29,7 +29,7 @@ tokenizer::TiktokenFactory::TiktokenFactory(const std::string config){
  
 }
 
-bool::tokenizer::TiktokenFactory::get_vocab(){
+bool::tokenizer::tokenFactory::get_vocab(){
 
     auto json_data = json::parse(file_);
     auto vocab_json = json_data.at("model").at("vocab");
@@ -89,7 +89,7 @@ void get_pairs(const std::wstring& word, std::vector<std::pair<std::wstring, std
     }
 }
 
-void tokenizer::TiktokenFactory::bpe(const std::wstring& token, const BPERanks& bpe_ranks, std::vector<std::wstring>* result) {
+void tokenizer::tokenFactory::bpe(const std::wstring& token, const BPERanks& bpe_ranks, std::vector<std::wstring>* result) {
     std::set<int> merged;  // records indices in pairs that were merged.
     auto _left = [](int i, std::set<int>& merged) {
         for (int j = i - 1; j >= -1; j--) {
@@ -146,7 +146,7 @@ void tokenizer::TiktokenFactory::bpe(const std::wstring& token, const BPERanks& 
     }
 }
 
-void::tokenizer::TiktokenFactory::encode(const std::string& str, std::vector<int>& ids) {
+void::tokenizer::tokenFactory::encode(const std::string& str, std::vector<int>& ids) {
     std::regex re("('s|'t|'re|'ve|'m|'ll|'d| ?[[:alpha:]]+| ?[[:digit:]]+| ?[^\\s\\w]+|\\s+)");
     std::string input = str;
     std::vector<std::string> result;
@@ -172,7 +172,7 @@ void::tokenizer::TiktokenFactory::encode(const std::string& str, std::vector<int
 }
 
 
-std::string tokenizer::TiktokenFactory::decode_char(int id) {
+std::string tokenizer::tokenFactory::decode_char(int id) {
     
     if (id >= decoder_.size()) {
         return "";
@@ -187,7 +187,7 @@ std::string tokenizer::TiktokenFactory::decode_char(int id) {
     return r;
 }
 
-std::string tokenizer::TiktokenFactory::decode(std::vector<int> id){
+std::string tokenizer::tokenFactory::decode(std::vector<int> id){
     std::string  decode_string ;
     for (int i=0; i<id.size();i++)
     {

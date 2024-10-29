@@ -1,0 +1,3 @@
+/home/zjk/tokenizer_json/build/CMakeFiles/tokenizer.dir
+/home/zjk/tokenizer_json/build/CMakeFiles/edit_cache.dir
+/home/zjk/tokenizer_json/build/CMakeFiles/rebuild_cache.dir

@@ -6,7 +6,7 @@
 
 int  main(int argc, char **argv){
     int opt = 0;
-    std::string tiktoken_conf;
+    std::string token_conf;
     while ((opt = getopt(argc, argv, "t:")) != -1) {
         switch (opt) {
         case 't':
@@ -20,7 +20,7 @@ int  main(int argc, char **argv){
         }
     }
 
-    std::string config_path = tiktoken_conf;
+    std::string config_path = token_conf;
     tokenizer::tokenFactory factory(config_path); 
     std::vector<int> id;
     std::string decode_string;
